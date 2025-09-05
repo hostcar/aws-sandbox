@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: knmp
+  name: phpmyadmin-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: phpmyadmin-app
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin-app
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin/phpmyadmin:5.2
+          ports:
+            - containerPort: 80
+          env:
+            - name: PMA_HOST
+              value: "mysql-service"   # nombre del servicio de MySQL
+            - name: PMA_PORT
+              value: "3306"
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: root-pass
+                  name: mysql-secret-db
