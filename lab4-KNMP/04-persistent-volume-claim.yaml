@@ -4,7 +4,6 @@ metadata:
   name: mysql-pv-claim
   namespace: knmp
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
