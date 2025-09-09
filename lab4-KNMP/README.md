@@ -10,7 +10,6 @@ kubectl apply -f 05-deployment-mysql.yaml
 kubectl apply -f 06-service-mysql.yaml
 kubectl apply -f 07-deployment-phpmyadmin.yaml
 kubectl apply -f 08-service-phpmyadmin.yaml
-kubectl apply -f 09-datadog-agent.yaml
 ```
 
 Eliminar componentes
